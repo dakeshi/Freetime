@@ -114,10 +114,10 @@
     [scanner advance];
     
     NSSet *htmlBlockTags = [NSSet setWithObjects:
-                            @"p", @"div", @"h1", @"h2", @"h3", @"h4", @"h5", @"h6",
+                            @"p", @"div", @"a", @"h1", @"h2", @"h3", @"h4", @"h5", @"h6",
                             @"blockquote", @"pre", @"table", @"dl", @"ol", @"ul",
                             @"script", @"noscript", @"form", @"fieldset", @"iframe",
-                            @"math", @"ins", @"del", nil];
+                            @"math", @"ins", @"del", @"details", nil];
     NSString *tagName = [scanner nextWord];
     if (![htmlBlockTags containsObject:tagName])
         return nil;
@@ -211,10 +211,10 @@
     [scanner advance];
     
     NSSet *htmlBlockTags = [NSSet setWithObjects:
-                            @"p", @"div", @"h1", @"h2", @"h3", @"h4", @"h5", @"h6",
+                            @"p", @"div", @"a",  @"h1", @"h2", @"h3", @"h4", @"h5", @"h6",
                             @"blockquote", @"pre", @"table", @"dl", @"ol", @"ul",
                             @"script", @"noscript", @"form", @"fieldset", @"iframe",
-                            @"math", @"ins", @"del", nil];
+                            @"math", @"ins", @"del", @"details", nil];
     NSString *tagName = scanner.nextWord;
     if (![htmlBlockTags containsObject:tagName])
         return nil;

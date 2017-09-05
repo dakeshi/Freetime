@@ -19,6 +19,9 @@ func newSettingsRootViewController(
         let first = nav.viewControllers.first as? SettingsViewController {
         first.sessionManager = sessionManager
         first.rootNavigationManager = rootNavigationManager
+        nav.tabBarItem.title = NSLocalizedString("Settings", comment: "")
+        nav.tabBarItem.image = UIImage(named: "tab-gear")
+        nav.tabBarItem.selectedImage = UIImage(named: "tab-gear-selected")
     }
 
     return controller
@@ -29,9 +32,18 @@ func newNotificationsRootViewController(client: GithubClient) -> UIViewControlle
     let title = NSLocalizedString("Notifications", comment: "")
     controller.navigationItem.title = title
     controller.navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
-    return controller
-//    let nav = UINavigationController(rootViewController: controller)
-//    nav.tabBarItem.title = title
-//    nav.tabBarItem.image = UIImage(named: "inbox")
-//    return nav
+    let nav = UINavigationController(rootViewController: controller)
+    nav.tabBarItem.title = title
+    nav.tabBarItem.image = UIImage(named: "tab-inbox")
+    nav.tabBarItem.selectedImage = UIImage(named: "tab-inbox-selected")
+    return nav
+}
+
+func newSearchRootViewController(client: GithubClient) -> UIViewController {
+    let controller = SearchViewController(client: client)
+    let nav = UINavigationController(rootViewController: controller)
+    nav.tabBarItem.title = NSLocalizedString("Search", comment: "")
+    nav.tabBarItem.image = UIImage(named: "tab-search")
+    nav.tabBarItem.selectedImage = UIImage(named: "tab-search-selected")
+    return nav
 }

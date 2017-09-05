@@ -26,11 +26,11 @@ final class WebviewCellHeightCache: IssueCommentHtmlCellDelegate {
 
     // MARK: IssueCommentHtmlCellDelegate
 
-    func webViewDidLoad(cell: IssueCommentHtmlCell, html: String) {
-        guard htmlSizes[html] == nil,
-            let sectionController = self.sectionController
+    func webViewDidResize(cell: IssueCommentHtmlCell, html: String, size: CGSize) {
+        guard let sectionController = self.sectionController,
+            size != htmlSizes[html]
             else { return }
-        htmlSizes[html] = cell.webViewPreferredSize()
+        htmlSizes[html] = size
         UIView.performWithoutAnimation {
             sectionController.collectionContext?.invalidateLayout(for: sectionController)
         }

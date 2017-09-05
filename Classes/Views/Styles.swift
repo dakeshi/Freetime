@@ -20,6 +20,7 @@ enum Styles {
         static let rowSpacing: CGFloat = 8
         static let cellSpacing: CGFloat = 15
         static let tableCellHeight: CGFloat = 44
+        static let tableCellHeightLarge: CGFloat = 55
         static let tableSectionSpacing: CGFloat = 35
         static let avatar = CGSize(width: 30, height: 30)
         static let inlineSpacing: CGFloat = 4
@@ -29,6 +30,12 @@ enum Styles {
         static let listInsetTight = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
         static let textCellInset = UIEdgeInsets(
             top: 0,
+            left: Styles.Sizes.gutter,
+            bottom: Styles.Sizes.rowSpacing,
+            right: Styles.Sizes.gutter
+        )
+        static let textViewInset = UIEdgeInsets(
+            top: Styles.Sizes.rowSpacing,
             left: Styles.Sizes.gutter,
             bottom: Styles.Sizes.rowSpacing,
             right: Styles.Sizes.gutter
@@ -101,8 +108,15 @@ enum Styles {
         }
 
         enum Yellow {
+            static let medium = "f29d50"
             static let light = "fff5b1"
         }
+    }
+
+    static func setupAppearance() {
+        UINavigationBar.appearance().tintColor =  Styles.Colors.Blue.medium.color
+        UINavigationBar.appearance().titleTextAttributes =
+            [NSForegroundColorAttributeName: Styles.Colors.Gray.dark.color]
     }
 
 }
